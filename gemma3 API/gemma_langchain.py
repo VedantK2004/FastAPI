@@ -1,8 +1,12 @@
 from langchain_google_genai import ChatGoogleGenerativeAI
+from dotenv import load_dotenv
 import os
 
-os.environ["GOOGLE_API_KEY"] = "AIzaSyCdBE2hHnytVmloXOIMsI9K9RN1c1uuy8c"
+load_dotenv()
+GEMMA_API_KEY = os.getenv("GEMMA_API_KEY")
+
+os.environ["GOOGLE_API_KEY"] = GEMMA_API_KEY
 
 llm = ChatGoogleGenerativeAI(model="gemma-3-27b-it")
-result = llm.invoke("Write me a ballad about LangChain")
+result = llm.invoke("Write a python script to generate a chatbot using langchaina nd openai")
 print(result.content)
